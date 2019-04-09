@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>VueJS</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-on:input="changeTitle">
+        <h1 v-once> {{ title }} </h1>
+        <p> {{ sayHello() }} - <a v-bind:href="link" > Google </a></p>
+        <hr>
+        <p v-html="finishedLink"></p>
+
+        <p>VueJS is pretty cool - {{ name }} {{ age }}</p>
+        <p> Exercise 2 {{ age * 3 }}</p>
+        <div>
+            <img v-bind:src="imagePath" width="50px" height="50px"/>
+        </div>
+
+        <div>
+            <input type="text" v-bind:placeholder="name">
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                title: 'Hello title!',
+                link: 'http://google.com',
+                finishedLink: '<a href="http://google.com">Google</a>',
+                name: 'Aparna',
+                age: 29,
+                imagePath: 'https://assets.fireside.fm/file/fireside-images/podcasts/images/b/bc7f1faf-8aad-4135-bb12-83a8af679756/cover_medium.jpg'
+            },
+            methods: {
+                changeTitle: function () {
+                    this.title = event.target.value;
+                },
+                sayHello: function() {
+                    this.title = 'Hello!!';
+                    return this.title ;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
